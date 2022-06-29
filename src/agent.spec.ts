@@ -117,10 +117,6 @@ describe("uniswap bot", () => {
 
       const findings = await handleTransaction(mockTxEvent);
       expect(findings).toStrictEqual([]);
-      expect(mockTxEvent.filterLog).toHaveBeenCalledTimes(1);
-      expect(mockTxEvent.filterLog).toHaveBeenCalledWith(
-        SWAP_EVENT,
-      );
     })
   });
 });

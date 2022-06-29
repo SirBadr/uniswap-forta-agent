@@ -32,7 +32,6 @@ const handleTransaction: HandleTransaction = async (
   const uniswapSwapEvents = txEvent.filterLog(
     SWAP_EVENT
   );
-
   const isUniswapAddress = async (currPool: string) => {
     // compare factory contract address with our constant
     const provider = getEthersProvider();
