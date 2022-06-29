@@ -44,7 +44,7 @@ describe("uniswap bot", () => {
 
     it("returns a finding if there is a swapping event from uniswap", async () => {
       // sender, recipient, amount0, amount1, sqrtPriceX96, liquidity, tick
-      console.log("START");
+      //console.log("START");
       const mockSwappingEvent = {
         args: {
           sender: "0xabc",
@@ -62,7 +62,7 @@ describe("uniswap bot", () => {
         .mockReturnValue([mockSwappingEvent]);
 
       const findings = await handleTransaction(mockTxEvent);
-      console.log(findings);
+      //console.log(findings);
 
       const sender = mockSwappingEvent.args.sender;
       const recipient = mockSwappingEvent.args.recipient;
@@ -95,7 +95,7 @@ describe("uniswap bot", () => {
       expect(mockTxEvent.filterLog).toHaveBeenCalledWith(
         SWAP_EVENT,
       );
-      console.log("FINISH");
+      //console.log("FINISH");
     });
 
     it("returns no findings if there's a swapping event not from uniswap", async() => {

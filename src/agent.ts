@@ -46,16 +46,16 @@ const handleTransaction: HandleTransaction = async (
 
     return false;
   }
-
-  uniswapSwapEvents.forEach(async (swapEvent) => {
+  //uniswapSwapEvents.forEach(async (swapEvent) =>
+  for(const swapEvent of uniswapSwapEvents) {
     // extract transfer event arguments
     const { sender, recipient, amount0, amount1, sqrtPriceX96, liquidity, tick } = swapEvent.args;
     // shift decimals of transfer value
-    console.log(swapEvent);
-    //const isUniPool = await isUniswapAddress(swapEvent.address);
-    if(await isUniswapAddress(swapEvent.address)) {
+    //console.log(swapEvent);
+    const isUniPool = await isUniswapAddress(swapEvent.address);
+    if(isUniPool) {
       //const swapEvents = txEvent.filterLog(SWAP_EVENT, swapEvent.address);
-      console.log("inside");
+      //console.log("inside");
       findings.push(
         Finding.fromObject({
           name: "UNISWAP V3 swap",
@@ -76,7 +76,7 @@ const handleTransaction: HandleTransaction = async (
       )
       findingsCount++;
     }
-  });
+  };
 
   return findings;
 };
