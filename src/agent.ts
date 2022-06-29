@@ -37,9 +37,14 @@ const handleTransaction: HandleTransaction = async (
     const provider = getEthersProvider();
     // Query the pool contract for tokens and fee
     const poolContract = new ethers.Contract(currPool, POOL_ABI, provider);
-    const factory = await poolContract.factory();
+    const token0 = await poolContract.token0();
+    const token1 = await poolContract.token1();
+    const fee = await poolContract.fee();
 
-    if(factory.toLowerCase() == FACTORY_ADDRESS.toLowerCase()){
+    const factoryContract = new ethers.Contract(FACTORY_ADDRESS, FACTORY_ABI, provider);
+    const getPool = await factoryContract.getPool(token0, token1, fee);
+
+    if(currPool.toLowerCase() == getPool.toLowerCase()){
       return true;
     }
 
