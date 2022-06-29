@@ -30,7 +30,7 @@ describe("uniswap bot", () => {
   });
 
   describe("handleTransaction", () => {
-    /*it("returns empty findings if there are no swapping events", async () => {
+    it("returns empty findings if there are no swapping events", async () => {
       mockTxEvent.filterLog = jest.fn().mockReturnValue([]);
 
       const findings = await handleTransaction(mockTxEvent);
@@ -40,7 +40,7 @@ describe("uniswap bot", () => {
       expect(mockTxEvent.filterLog).toHaveBeenCalledWith(
         SWAP_EVENT,
       );
-    });*/
+    });
 
     it("returns a finding if there is a swapping event from uniswap", async () => {
       // sender, recipient, amount0, amount1, sqrtPriceX96, liquidity, tick
@@ -98,7 +98,7 @@ describe("uniswap bot", () => {
       console.log("FINISH");
     });
 
-    /*it("returns no findings if there's a swapping event not from uniswap", async() => {
+    it("returns no findings if there's a swapping event not from uniswap", async() => {
       const mockSwappingEvent = {
         args: {
           sender: "0xabc",
@@ -121,6 +121,6 @@ describe("uniswap bot", () => {
       expect(mockTxEvent.filterLog).toHaveBeenCalledWith(
         SWAP_EVENT,
       );
-    })*/
+    })
   });
 });
