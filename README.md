@@ -1,4 +1,4 @@
-# Large Tether Transfer Agent
+# UniswapV3 swaps Agent
 
 ## Description
 
@@ -15,3 +15,12 @@ Describe each of the type of alerts fired by this agent
 
 - FORTA-1
   - Fired when a swap happens on UNISWAP V3
+
+## install dependencies
+- npm install
+
+## test bot
+- npm test
+
+## run bot
+- npm start
